@@ -3,9 +3,9 @@ import example.*
 
 
 
-class Autos {
+class Naves {
 	
-	var property evento = "Aparece auto"
+	var property evento = "Aparece Nave"
 	var property position = null
 	var property image = null
 	var property monedas = 0
@@ -14,7 +14,7 @@ class Autos {
 	method sumaMonedas() {}
 	
 	method aparece(){
-		image = ["simple-travel-car-top_view.png","sedan.png"].anyOne()
+		image = ["simple-travel-nave-top_view.png","nave.png"].anyOne()
 		const x = (3 .. game.width() - 4).anyOne()
 		const y = game.height() - 2
 		position = game.at(x,y)
@@ -25,8 +25,8 @@ class Autos {
 	
 	method desaparece(){
 		if (game.hasVisual(self)){
-			game.removeTickEvent("aparece Auto")
-			//game.removeTickEvent("aparece Auto1")
+			game.removeTickEvent("aparece Nave")
+			//game.removeTickEvent("aparece Nave1")
 			game.removeTickEvent("aparece moneda")
 			game.addVisual(gameover)
 			game.onTick(1500,"se cierra",{game.stop()})

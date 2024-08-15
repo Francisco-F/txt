@@ -1,6 +1,6 @@
 import wollok.game.*
 import example.*
-import sedan.*
+import nave.*
 
 
 class Moneda {
@@ -16,7 +16,7 @@ class Moneda {
 	
 	
 	method cuantasMonedas(){
-		game.say(choquesedan2, "Tengo " + pantalla.monedas().toString() + " monedas!")
+		game.say(choquenave2, "Tengo " + pantalla.monedas().toString() + " monedas!")
 	}
 
 	method aparecer(){
@@ -24,9 +24,9 @@ class Moneda {
 		game.addVisual(self)
 		game.onTick(100,evento,{self.avanzar()})
 		game.onCollideDo(self,{algo => algo.sumaMonedas()})
-		game.onCollideDo(choquesedan2,{algo => self.cuantasMonedas()})
-		game.onCollideDo(choquesedan3,{algo => self.cuantasMonedas()})
-		game.onCollideDo(choquesedan4,{algo => self.cuantasMonedas()})
+		game.onCollideDo(choquenave2,{algo => self.cuantasMonedas()})
+		game.onCollideDo(choquenave3,{algo => self.cuantasMonedas()})
+		game.onCollideDo(choquenave4,{algo => self.cuantasMonedas()})
 		
 		
 		

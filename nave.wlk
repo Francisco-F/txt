@@ -2,12 +2,12 @@ import example.*
 import wollok.game.*
 import monedas.*
 
-object sedan {
+object nave {
 	var property score = 0
 	var property position = game.at(5,3)
 	var property monedas = 0
 
-	method image() = "sedan1.png"
+	method image() = "nave1.png"
 
 	method moverseDerecha() {
 		position = position.right(1)
@@ -25,10 +25,10 @@ object sedan {
 	}
 	method sumaMonedas() = { monedas += 1}
 	
-	method sumarScore(){ // hacer metodo para monedas y cambiar codigo
+	method sumarScore(){ 
 		score += 1
 		if (self.score() == 15 and pantalla.monedas() >= 3){
-			game.removeTickEvent("aparece Auto")
+			game.removeTickEvent("aparece Nave")
 			game.removeTickEvent("aparece moneda")
 			game.removeVisual(self)
 			keyboard.v().onPressDo{game.stop()}
@@ -36,7 +36,7 @@ object sedan {
 		}
 		else{
 			if(self.score() == 15 and pantalla.monedas()< 3){
-			game.removeTickEvent("aparece Auto")
+			game.removeTickEvent("aparece Nave")
 			game.removeTickEvent("aparece moneda")
 			game.removeVisual(self)
 			game.addVisual(gameover)
@@ -46,37 +46,37 @@ object sedan {
 	}
 	
 }
-object choquesedan2 {
+object choquenave2 {
 	var property monedas = 0
 
-	method position() = sedan.position().up(3)
+	method position() = nave.position().up(3)
 	method sumaMonedas() {monedas += 1}
 }
 
-object choquesedan3 {
+object choquenave3 {
 	var property monedas = 0
 
-	method position() = sedan.position().left(1).up(1)
+	method position() = nave.position().left(1).up(1)
 	method sumaMonedas() {monedas += 1}
 }
 
-object choquesedan4 {
+object choquenave4 {
 	var property monedas = 0
 	
-	method position() = sedan.position().right(1).up(1)
+	method position() = nave.position().right(1).up(1)
 	method sumaMonedas() {monedas += 1}
 }
 
-object choquesedan5 {
+object choquenave5 {
 	var property monedas = 0
 	
-	method position() = sedan.position().right(1).down(1)
+	method position() = nave.position().right(1).down(1)
 	method sumaMonedas() {monedas += 1}
 }
 
-object choquesedan6 {
+object choquenave6 {
 	var property monedas = 0
 
-	method position() = sedan.position().left(1).down(1)
+	method position() = nave.position().left(1).down(1)
 	method sumaMonedas() {monedas += 1}
 }

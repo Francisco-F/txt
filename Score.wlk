@@ -1,6 +1,6 @@
 import wollok.game.*
 import example.*
-import sedan.*
+import nave.*
 
 
 class Score {

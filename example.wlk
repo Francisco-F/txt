@@ -1,9 +1,8 @@
 import wollok.game.*
-import sedan.*
+import nave.*
 import monedas.*
 import Npcs.*
 import Score.*
-
 
 object gameover {
 	method image() = "gameover.png"
@@ -22,10 +21,10 @@ object juego{
 		game.width(15)
 		game.boardGround("ruta.png")
 		game.addVisual(menu)
-		game.title("Fast and furious: Panamericana Edition")
+		game.title("Space Race")
 		game.start()
 		menu.iniciarjuego()	
-		}
+	}
 }
 
 object menu {
@@ -46,10 +45,10 @@ object pantalla {
 	)
 	const scoreNumber = new Score(
 		position = game.at(0, 17),
-		image= sedan.score().toString() + '.png'
+		image= nave.score().toString() + '.png'
 	)	
 	
-	method monedas() = (sedan.monedas() + choquesedan2.monedas() + choquesedan3.monedas() + choquesedan4.monedas() + choquesedan5.monedas() + choquesedan6.monedas())
+	method monedas() = (nave.monedas() + choquenave2.monedas() + choquenave3.monedas() + choquenave4.monedas() + choquenave5.monedas() + choquenave6.monedas())
 	method position() = game.at(-1.5,1)
 	method image() = "ruta.png"
 	
@@ -69,22 +68,22 @@ object pantalla {
 		}
 		
 	method agregarVisuales() {
-		game.addVisualCharacter(sedan)
-		game.addVisualCharacter(choquesedan2)
-		game.addVisualCharacter(choquesedan3)
-		game.addVisualCharacter(choquesedan4)
-		game.addVisualCharacter(choquesedan5)
-		game.addVisualCharacter(choquesedan6)
+		game.addVisualCharacter(nave)
+		game.addVisualCharacter(choquenave2)
+		game.addVisualCharacter(choquenave3)
+		game.addVisualCharacter(choquenave4)
+		game.addVisualCharacter(choquenave5)
+		game.addVisualCharacter(choquenave6)
 		game.addVisual(scoreInGame)
 		game.addVisual(scoreNumber)			
 	}
 	method programarTeclas() {
-		keyboard.d().onPressDo{sedan.moverseDerecha()}
-		keyboard.a().onPressDo{sedan.moverseIzquierda()}
+		keyboard.d().onPressDo{nave.moverseDerecha()}
+		keyboard.a().onPressDo{nave.moverseIzquierda()}
 		}
 		
 	method spawnAutos() {
-		game.onTick(3000,"aparece Auto", {new Autos().aparece()})
+		game.onTick(3000,"aparece Nave", {new Naves().aparece()})
 	}
 		
 	method spawnMonedas(){
@@ -93,34 +92,36 @@ object pantalla {
 	
 	
 	method definirColisiones3(){
-		game.onCollideDo(sedan,{algo => algo.desaparece()})
+		game.onCollideDo(nave,{algo => algo.desaparece()})
 	}
 	
 	method definirColisiones4(){
-		game.onCollideDo(choquesedan2,{algo => algo.desaparece()})
+		game.onCollideDo(choquenave2,{algo => algo.desaparece()})
 	}
 	method definirColisiones5(){
-		game.onCollideDo(choquesedan3,{algo => algo.desaparece()})
+		game.onCollideDo(choquenave3,{algo => algo.desaparece()})
 	}
 	
 	method definirColisiones6(){
-		game.onCollideDo(choquesedan4,{algo => algo.desaparece()})
+		game.onCollideDo(choquenave4,{algo => algo.desaparece()})
 	}
 	
 	method definirColisiones7(){
-		game.onCollideDo(choquesedan5,{algo => algo.desaparece()})
+		game.onCollideDo(choquenave5,{algo => algo.desaparece()})
 	}
 	
 	method definirColisiones8(){
-		game.onCollideDo(choquesedan6,{algo => algo.desaparece()})
+		game.onCollideDo(choquenave6,{algo => algo.desaparece()})
 	}
 	method sumarpuntos(){
-		game.onTick(2300,"suma puntos",{sedan.sumarScore()})
+		game.onTick(2300,"suma puntos",{nave.sumarScore()})
 	}
 		
 	method mostrarscore(){
-			game.onTick(2300, 'add score', {scoreNumber.changeScoreImage(sedan.score())})
+			game.onTick(2300, 'add score', {scoreNumber.changeScoreImage(nave.score())})
 		}
 		
 	method estaEnElTablero(ubicacion) = ubicacion.x().between(2, game.width()-4) && ubicacion.y().between(-2, game.height())		
 }
+
+
